@@ -1,4 +1,55 @@
-*
-!*.cpp
-!Makefile
-!*.txt
+# Compiled object files
+*.o
+*.obj
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Executables
+*.exe
+*.out
+
+# Compiled files from IDEs or build tools
+bin/
+build/
+Debug/
+Release/
+.vscode/
+.idea/
+*.user
+*.suo
+*.ncb
+*.sdf
+
+# Dependency directories
+lib/
+vendor/
+
+# CMake build directory
+CMakeFiles/
+CMakeCache.txt
+CMakeScripts/
+
+# Visual Studio files
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcproj
+
+# Xcode files
+*.xcodeproj/
+*.xcworkspace/
+
+# Generated files
+tags
+*.tags
+*.tags.*
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+desktop.ini
+
+*.json
