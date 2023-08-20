@@ -1,4 +1,6 @@
 #include<iostream>	
+#include<algorithm>
+#include<map>
 
 using namespace std;	
 int main(){	  
@@ -20,13 +22,29 @@ int main(){
     // //     cout<<x<<" ";
     // // }
     // cout<<a(a.begin(),a.begin()+2);
-    int it = 5;
-    int k =15;
-    int begin  = it-k;
-    (begin<0)? begin=0 : begin;
-    cout<<begin;
-    
-   
+    // int it = 5;
+    // int k =15;
+    // int begin  = it-k;
+    // (begin<0)? begin=0 : begin;
+    // cout<<begin;
+
+//     int arr[] = {4,3};
+//     int want = -3;
+//    auto it = find(arr+1,arr+2,want);
+//     cout<<"it"<<*it;
+//     if(*it==want){
+//         cout<<"YES"<<endl;
+//     }
+//     else{
+//         cout<<"NO";
+//     }
+    map<string,int> name;
+    name["kkk"] = 2;
+    name["JA"] = 1;
+    for(auto it = name.begin();it!=name.end();it++)
+{
+    cout << it->first<<endl;
+}   
 
     return 0;	
 }
