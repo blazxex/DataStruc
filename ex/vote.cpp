@@ -32,7 +32,7 @@ int main(){
         cout<<voteNum[0];
     }
     else{
-        cout<<*(it-member);
+        cout<<*(it-member+1);
     }
     
 

@@ -1,25 +1,38 @@
 #include<iostream>
 #include<map>
 #include<algorithm>
+#include<string>
 
 using namespace std;
 
 int main(){
-    int num;
+    int num,maxCount;
+    string maxWord;
     string getName;
-    map<string,int> name;
+    map<string,int> nameV;
     cin>>num;
-    for (int i = 0;i<num ;i++){
+    maxCount = 0;
+    for (int i = 0; i< num;i++){
         cin>>getName;
-        auto it=find(name.begin(),name.end(),getName);
-        if(it!=name.end()){
-            it->second++;
+        auto it = nameV.find(getName);
+        if(it==nameV.end()){
+            nameV[getName] = 1;
         }
         else{
-            name[getName] = 1;
+            nameV[getName]++;
+        }
+        if(nameV[getName]>maxCount){
+            maxCount = nameV[getName];
         }
     }
+    auto it = nameV.end();
+    while(it!= nameV.begin()){
+        it--;
+        if(it->second == maxCount){
+            cout<< it->first << " "<<it->second;
+            break;
+        }
+    }
+
 }
-// for(auto it2 = name.begin();it2!=name.end();it2++){
-//     cout<<it2->first;
-// }
+ 

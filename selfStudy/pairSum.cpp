@@ -19,7 +19,9 @@ int main(){
         }
         if (x==a.end()&&i == a.size()-1){
         cout<<"NO";
+        
     }
+
     }
 
     

@@ -3,6 +3,9 @@
 #include<map>
 
 using namespace std;	
+bool myFunction(int i,int j){
+        return i>j;
+    }
 int main(){	  
 
 //    pair<int,float> v2 ={4,6};
@@ -38,13 +41,29 @@ int main(){
 //     else{
 //         cout<<"NO";
 //     }
-    map<string,int> name;
-    name["kkk"] = 2;
-    name["JA"] = 1;
-    for(auto it = name.begin();it!=name.end();it++)
-{
-    cout << it->first<<endl;
-}   
 
-    return 0;	
-}
+    // int num;
+    // string getName;
+    // map<string,int> name;
+    // for (int i = 0; 9< num;i++){
+    //     cin>>getName;
+    //     auto it = find(name.begin(),name.end(),getName);
+    //     if(it!=name.end()){
+    //         name[getname] = 1;
+    //     }
+    //     else{
+    //         name[getName]++
+    //     }
+    // }
+    // for( auto &x;name){
+    //     cout<<name.first<<" "<<name.second<<endl;
+    // }
+    
+    vector<int> a = {6,5,8,9,1,2,4,5};
+    sort(a.begin(),a.end(),myFunction);
+    for(auto &x :a ){
+        cout<<x<<" ";
+    }
+
+}  
+
