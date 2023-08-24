@@ -1,11 +1,11 @@
 #include<iostream>	
 #include<algorithm>
-#include<map>
+#include<vector>
 
 using namespace std;	
-bool myFunction(int i,int j){
-        return i>j;
-    }
+// bool myFunction(int i,int j){
+//         return i>j;
+//     }
 int main(){	  
 
 //    pair<int,float> v2 ={4,6};
@@ -59,11 +59,22 @@ int main(){
     //     cout<<name.first<<" "<<name.second<<endl;
     // }
     
-    vector<int> a = {6,5,8,9,1,2,4,5};
-    sort(a.begin(),a.end(),myFunction);
-    for(auto &x :a ){
-        cout<<x<<" ";
-    }
+    // vector<int> a = {6,5,8,9,1,2,4,5};
+    // sort(a.begin(),a.end(),myFunction);
+    // for(auto &x :a ){
+    //     cout<<x<<" ";
+    // }
+    // vector<pair<int,int>> number{{2,3},{1,7},{8,9}};
+    // sort(number.begin(),number.end());
+    // for(auto &x:number){
+    //     cout<<x.first<<" "<<x.second<<"\n";
+    // }
+    // auto it = lower_bound(number.begin(),number.end(),{5,5});
+    // cout<<*it;
+    pair<int,int> a = make_pair(3,4);
+    pair<int,int> b = {3,4};
+    cout<< (a==b);
+    
 
 }  
 

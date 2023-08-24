@@ -2,21 +2,11 @@
 #include <vector>
 using namespace std;
 void reverse(vector<int> &v,vector<int>::iterator a,vector<int>::iterator b) {
-    vector<int> temp;
-    int begin = a-v.begin()-1 ;
-    int end = b-v.begin()-1;
-    for (size_t i=b-v.begin()-2;i>=a-v.begin();i--){
-
-        temp.push_back(*(v.begin()+i));
-    }
-
-   for(size_t i = 0;i<v.size();i++){
-        if(i>=begin || i<=end){
-            cout<<i<<" "<<i-begin;
-            //v[i] = temp[i-begin];
-        }
-   }
-
+  b--;
+  for(int i = 0;i<(b-a)/2;i++){
+    swap(*(a+i),*(b-i));
+  }
+  
 }
 int main() {
   //read input
