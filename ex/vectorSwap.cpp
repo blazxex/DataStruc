@@ -1,9 +1,27 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
+
 void vector_swap(vector<int> &v1,vector<int> &v2,
-    int start1, int end1,
-    int start2, int end2) {
+    int start1, int end1,int start2, int end2) {
+  vector <int> temp1;
+  vector <int> temp2;
+  temp1.insert(temp1.begin(),v1.begin(),v1.begin()+start1);
+  temp2.insert(temp2.begin(),v2.begin(),v2.begin()+start2);
+
+  temp1.insert(temp1.end(),v2.begin()+start2,v2.begin()+end2);
+  temp2.insert(temp2.end(),v1.begin()+start1,v1.begin()+end1);
+
+  temp1.insert(temp1.end(),v1.begin()+end1,v1.end());
+  temp2.insert(temp2.end(),v2.begin()+end2,v2.end());
+
+  v1 = temp1;
+  v2 = temp2;
+  
+      
+
+  
 }
 int main() {
   //read input

@@ -25,13 +25,13 @@ int main() {
     // for (size_t i=0;i<b.size();i++){
     //     cout << b[i]<<" ";
     // }
-    vector<int> v = {110,20};
-    auto it = v.end()-1;
-    v.resize(10);
-    for (auto &x : v){
-        cout << x <<endl;
-    }
-    cout<<*it<<endl;
+    // vector<int> v = {110,20};
+    // auto it = v.end()-1;
+    // v.resize(10);
+    // for (auto &x : v){
+    //     cout << x <<endl;
+    // }
+    // cout<<*it<<endl;
 
     // v.push_back(20);
     // auto it = find(v.begin(),v.end(),20);
@@ -40,11 +40,17 @@ int main() {
     //  for(auto &x :v2){
     //     cout<<x<<endl;
     // }
-    v.insert(it,99);
-    // for (auto &x : v){
-    //     cout << x <<endl;
-    // }
+    // v.insert(it,99);
+  vector<int> v1 = {9, 1, 2, 3, 4, 5, 6, 7};
+  vector<int> v2 = {9, 1, 2, 3, 4, 5, 6, 7};
+  vector<int> v3;
+  v3 = v1+v2;
+  // auto it = find(v.begin(), v.end(), 1);
+  // cout<<*it;
+  // v.insert(it, 20);
+  // v.insert(it, 20); // Adjusted position
 
-
-
+  for (auto &x : v3) {
+    cout << x << " ";
+  }
 }

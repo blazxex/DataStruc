@@ -1,72 +1,57 @@
 #include<iostream>
+#include<map>
+#include<set>
 #include<algorithm>
-#include<vector>
+
 using namespace std;
 
-int main(){
-    std::ios_base::sync_with_stdio(false); std::cin.tie(0);
-    int year,month,info,ques;
-    char status = 'X';
-
-    vector< pair<int,int> > publish;
-    pair<int,int> temp;
-    cin>>info>>ques;
-    for(int i = 0;i<info;i++){
-        cin>>year>>month;
-        publish.push_back(make_pair(year,month));
-
-
+void slove(map<int,set<int>> &p,int y,int m){
+    auto b = p.begin();
+    auto e = p.end();
+    auto check = p.find(y);
+    auto itY = p.lower_bound(y);
+    if(itY==e){  //mean year is higher than we have
+        itY--;
+        auto itM = (itY->second).end();
+        itM--;
+        cout<<itY->first<<" "<<*itM;
     }
-    sort(publish.begin(),publish.end());
-    
-    for(int j = 0;j< ques;j++){
-        cin>>year>>month;
-        temp = make_pair(year,month);
-        char status = 'X';
-        if(temp<publish[0]){
+    else{
+        if(itY->first == y ){
+            auto itM = itY->second.lower_bound(m);
+            
+            if(*itM == m){
+                cout<<"0 0 ";
+            }
+            else if(*itM > m){
+                cout<<"-1 -1 ";
+            }
+            else{
+                itM--;
+                cout<<itY->first<<" "<<*itM<<" ";
+            }
+
+        }
+        else if(itY->first >y){
             cout<<"-1 -1 ";
         }
-        else if(temp > publish[info-1]){
-            cout<<publish[info-1].first<<" "<<publish[info-1].second<<" ";
-        }
-        else{
-
-            int right = info-1;
-            int left = 0;
-            while(right>=left){
-                int mid = left+ (right - left)/2;
-                if(publish[mid]>temp){  // pointer is greater
-                    right = mid-1;
-                    if(status == 'Y'){
-                        cout<<publish[mid-1].first<<" "<<publish[mid-1].second<<" ";
-                        break;
-                    }
-                    status = 'N';
-                    
-                }
-                else if(publish[mid]<temp){  //poiter is lower
-                    left = mid+1;
-                    if(status == 'N'){
-                        cout<<publish[mid].first<<" "<<publish[mid].second<<" ";
-                        break;
-                    }
-                    status = 'Y';
-                    
-                }
-                else if(publish[mid]==temp){
-                    cout<<"0 0 ";
-                    break;
-                }
-               
-                // else{
-                //     cout<<publish[mid].first<<" "<<publish[mid].second<<"\n";
-                //     break;
-                // }
-
-            }
-        }
-        
     }
-        
+    
 }
+int main(){
+    std::ios_base::sync_with_stdio(false); std::cin.tie(0);
+    map<int,set<int>> publish;
+    int n,q,y,m;
+    cin >> n >> q ;
+    while(n--){
+        cin>>y>>m;
+        publish[y].insert(m);
+    }
+    while(q--){
+        cin>>y>>m;
+        slove(publish,y,m);
 
+    }
+
+    
+}
