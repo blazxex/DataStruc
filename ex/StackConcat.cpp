@@ -17,7 +17,7 @@ void stack_concat(stack<int> &s1, stack<int> &s2) {
   for(int i = v2.size()-1;i>=0;i--){
     s1.push(v2[i]);
   }
- for(int i = 0;i<v1.size();i++){
+ for(int i = v1.size()-1;i>=0;i--){
     s1.push(v1[i]);
   }
   
