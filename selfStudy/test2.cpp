@@ -71,10 +71,10 @@ int main(){
     // }
     // auto it = lower_bound(number.begin(),number.end(),{5,5});
     // cout<<*it;
-    pair<int,int> a = make_pair(3,4);
-    pair<int,int> b = {3,4};
-    cout<< (a==b);
-    
+    // pair<int,int> a = make_pair(3,4);
+    // pair<int,int> b = {3,4};
+    // cout<< (a==b);
+    cout<< int('A') < int('T');
 
 }  
 
