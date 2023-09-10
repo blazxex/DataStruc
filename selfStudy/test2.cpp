@@ -1,6 +1,7 @@
 #include<iostream>	
 #include<algorithm>
 #include<vector>
+#include<map>
 
 using namespace std;	
 // bool myFunction(int i,int j){
@@ -74,7 +75,13 @@ int main(){
     // pair<int,int> a = make_pair(3,4);
     // pair<int,int> b = {3,4};
     // cout<< (a==b);
-    cout<< int('A') < int('T');
+    vector<pair<int,int>> v ={{1,2},{2,2},{3,4},{9,9}};
+    map<int,int> m;
+    m.insert(v.begin(),v.end());
+    m.erase(1);
+    for(auto &x :m){
+        cout<< x.first <<" "<< x.second<<endl;
+    }
 
 }  
 

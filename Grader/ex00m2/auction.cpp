@@ -7,50 +7,62 @@
 using namespace std;
 
 int main(){
-    int items,user,auc,item,price;
-    cin>>items>>user>>auc;
-    string cmd;
-    vector<int> avbItem(items);
-    vector<set<int>> winner(user);
-    map<int,vector< pair <int,int>>>  auction;
-    for(int i = 0 ; i< items ; i++){
-        cin>>avbItem[i];
-        vector< pair <int,int>> q(user);
-        auction[i+1] = q;
-    }
-  //auc[item] = {{queue}}
-    while(auc--){
-        cin>>cmd;
-        if(cmd == "B"){
-            cin>>user>>item>>price;
-            auction[item][user-1] = make_pair(price,user);
-    }
-        else{
-            cin>>user>>item;
-            auction[item][user-1] = make_pair(-1,-1);
-        
-        }   
+   int type,user,price,line,userin;
+   char cmd;
+   cin>>type>>user>>line;
+   vector<int> avb(type);
+   map<int,set<int>> userGot;
+   vector<vector<pair<int,int>>> aucList(type,vector<pair<int,int>>(user));
+   for(int i = 0;i<user;i++){  //initialize what user got from auction
+        userGot[i] = {};
+   }
 
+   for(int i = 0 ; i<type;i++){  //get how many piece avilable fora each item with index 0 - (type-1)
+        cin>>avb[i];
+   }
+   while(line--){
+    cin>>cmd;
+    switch(cmd){
+        case 'B':
+            cin>>userin>>type>>price;
+            aucList[type-1][userin-1] ={price,userin};
+            break;
+        case 'W':
+            cin>>userin>>type;
+            aucList[type-1][userin-1] ={0,0};
+            break;
     }
-    
-    for(int i = 1 ;i<=items;i++){
-        while(avbItem[i-1]>0 && auction[i].size()>0){
-            auto it = max_element(auction[i].begin(),auction[i].end());
-            // cout<<it->first << it->second<<endl;
-            winner[ (it->second)-1].insert(i);  //tell that the winner got this item
-            auction[i].erase(it);
-            avbItem[i-1]-=1;
+
+   }
+   for(int i = 0;i<type;i++){
+    sort(aucList[i].begin(),aucList[i].end());
+     for(int j = user-1 ;j>=0 ; j--){
+        if(aucList[i][j].first == 0){
+            break;
+        }
+        else{
+            if(avb[i]>0){
+                userGot[aucList[i][j].second].insert(i+1);
+                avb[i]--;
+            }
+            else{
+                break;
+            }
         }
     }
-    for(auto & x : winner){
-        if(x.empty()){
+   }
+   
+
+   
+   for(int i = 1;i<=user;i++){
+        if(userGot[i].empty()){
             cout<<"NONE\n";
         }
         else{
-            for(auto &y : x){
-                cout<<y<<" ";
+            for(auto &x : userGot[i]){
+                cout<<x<<" ";
             }
             cout<<"\n";
         }
-    }
+   }
 }
