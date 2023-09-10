@@ -12,8 +12,10 @@ public:
     string district; 
     int zip;
     bool operator < (const Letter& other) const {
-    //**Begin Insert**
-    //**End Insert** 
+        if(zip != other.zip){ return zip < other.zip;}
+        if(address != other.address){ return address < other.address; }
+        if(name != other.name){return name < other.name;}
+        return district < other.district;
     }
 };
 class ZipInfo{ 
@@ -22,11 +24,15 @@ class ZipInfo{
     string province; string district;
 };
     void correctZipAndSortLetters(vector<ZipInfo>& zipinfo, vector<Letter>& letters) { 
-     map<string,int> zipCheck;
-     for(int i = 0 ; i<zipinfo.size() ; i++){
-        zipCheck[zipinfo[i].district+" "+zipinfo[i].province] = zipinfo[i].zip;
-     }
-     for(int )
+    map<string,int> m;
+    for(ZipInfo &z : zipinfo){
+        m[z.district] = z.zip;
+    }
+    for(Letter &l : letters){
+        if(m[l.district] != l.zip) 
+            l.zip = m[l.district];
+    }
+    std::sort(letters.begin(), letters.end());
 
     }
 int main() { 
