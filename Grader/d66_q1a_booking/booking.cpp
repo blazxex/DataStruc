@@ -2,7 +2,7 @@
 #include<vector>
 #include<map>
 #include<unordered_set>
-#include<algorithm>
+
 using namespace std;
 void print(map<string,vector<string>> &m){
     for(auto it = m.begin() ; it!=m.end();it++){
@@ -27,7 +27,11 @@ int main(){
     cin>>ticket>>customer;
     for(int i = 0 ;i<ticket;i++){
         cin>>flight>>seat;
+        
+ 
         allTicket[flight].push_back(seat);
+  
+
     }
   
 
@@ -41,7 +45,9 @@ int main(){
         }
         customerInput.push_back(cusTmp);
     }
-    for(int i = 0 ; i <customerInput.size() ; i++){
+
+    for(int i = 0 ; i <customer ; i++){
+        cout<<"X";
         fail = false;
         int num = customerInput[i].size();
         for(int j = 0 ; j<num ; j ++){
@@ -51,19 +57,19 @@ int main(){
                 fail = true;
                 break;
             }
-            if(find(allTicket[flight].begin(),allTicket[flight].end(),seat)== allTicket[flight].end()){
+            else if(find(allTicket[flight].begin(),allTicket[flight].end(),seat)== allTicket[flight].end()){
                 fail = true;
                 break;
             }
             
         }
         if(!fail){
-            cout<<"YES\n";
+            cout<<"YES";
             for(int k = 0 ; k<num ; k++ ){
                 flight = customerInput[i][k].first;
                 seat =  customerInput[i][k].second;
                 auto it = find(allTicket[flight].begin(),allTicket[flight].end(),seat);
-                auto bg = allTicket[flight].begin();
+                auto bg = allTicket[seat].begin();
                 allTicket[flight][it-bg] = "00000000000";
             }
         }
@@ -75,5 +81,4 @@ int main(){
     
     
 }
-
 
