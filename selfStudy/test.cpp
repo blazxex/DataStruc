@@ -41,19 +41,21 @@ int main() {
     //     cout<<x<<endl;
     // }
     // v.insert(it,99);
-  vector<int> v1 = {9, 1, 2, 3, 4, 9, 6, 7};
-  vector<int> v2 = {9, 1, 2, 3, 4, 5, 6, 7};
-  vector<int> v3 = {2,5};
-  v3.insert(v3.begin()+1,v1.begin(),v1.begin()+5);
-  // auto it = find(v.begin(), v.end(), 1);
-  // cout<<*it;
-  // v.insert(it, 20);
-  // v.insert(it, 20); // Adjusted position
+  // vector<int> v1 = {9, 1, 2, 3, 4, 9, 6, 7};
+  // vector<int> v2 = {9, 1, 2, 3, 4, 5, 6, 7};
+  // vector<int> v3 = {2,5};
+  // v3.insert(v3.begin()+1,v1.begin(),v1.begin()+5);
+  // // auto it = find(v.begin(), v.end(), 1);
+  // // cout<<*it;
+  // // v.insert(it, 20);
+  // // v.insert(it, 20); // Adjusted position
 
-  int x =12;
-  int *t;
-  t = &x;
-  cout<<&t<<" "<<*t;
+  // int x =12;
+  // int *t;
+  // t = &x;
+  // cout<<&t<<" "<<*t;
+  vector<int> v2(5);
+  cout<&v2[0];
 
 
 }
