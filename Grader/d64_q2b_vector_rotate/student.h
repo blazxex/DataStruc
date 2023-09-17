@@ -6,20 +6,19 @@ void CP::vector<T>::rotate(iterator first, iterator last, size_t k) {
   //write your code here
   size_t beginPos = first-begin();
   size_t lastPos = last-begin();
-  
-  if(k!=0){
-    T * arr = new T[k+1]();
-    for(int i = 0 ; i< k ; i++){
-      arr[i] = mData[beginPos+i];
+  size_t num = last-first;
+  T m[k];
+  size_t j = 0;
+  if(k!=0 && num !=0){
+    for(size_t i = beginPos;i<beginPos+k;i++){
+      m[j++] = mData[i];
     }
-
-    for(size_t i = beginPos ; i<lastPos-1-k;i++){
-      mData[i] = mData[i+k];
+    for(size_t i = beginPos+k;i<lastPos;i++){
+      mData[i-k] = mData[i];
     }
-    for(int i = 0 ; i< k ; i++){
-      mData[beginPos+i]= arr[i] ;
+    for(size_t i = 0 ; i<k ; i++){
+      mData[lastPos-i-1] = m[k-i-1];
     }
-  
   }
 
   
