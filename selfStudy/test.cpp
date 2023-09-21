@@ -54,8 +54,72 @@ int main() {
   // int *t;
   // t = &x;
   // cout<<&t<<" "<<*t;
-  vector<int> v2(5);
-  cout<&v2[0];
+  // vector<int> v2 = {1,2,3,4,5,6};
+  // auto it = v2.lower_bound(3);
+  // cout<<*it;
+  int calculate_time (
+
+  )
+      auto it = m.upper_bound(a);
+      float max = 0;
+      int ans = -1;
+      while (it != m.end()) {
+if (it->first >= b) break; if (it->second >= max) {
+          ans = it->first;
+          max = it->second;
+        }
+it++; }
+return ans;
+
+<pair<string,bool>> split(queue<pair<string,bool>> &q) { // รับคิวท่ีมีคนปนกันหมด
+        __________________;
+        queue<pair<string,bool>> q2;
+        for(int i =0; i < _______ ; i++) {
+pair<string,bool> x = q.front(); if(_____) { //กรณีท่ีเป็นคนที่จองทางเว็บ
+_________;
+                q.pop();
+            } else {
+q.pop();
+_________; }
+}
+        ___________;
+
+    int calculate_time(queue<int> q, vector<int> v) {
+        int time = 0;
+while(______________) {
+for(int i = 0; ___________; i++) {
+                if(_____________) return time;
+                if(_____________) {
+q.pop(); }
+            }
+            if(q.empty()) __________;
+            time++;
+}
+        ___________;
+    }
+
+        void reverse(std::queue<int> &q)  {
+      set<pair<int,int>> s;
+      while (q.empty() == false) {
+        s.insert({-s.size(),q.front()});
+q.pop(); }
+      for (auto &x : s) {
+        q.push(x.second);
+}
+}
+    }
+}
 
 
 }
+
+      auto it = m.upper_bound(a);
+      float max = 0;
+      int ans = -1;
+      while (it != m.end()) {
+if (it->first >= b) break; if (it->second >= max) {
+          ans = it->first;
+          max = it->second;
+        }
+it++; }
+return ans;
