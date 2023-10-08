@@ -1,54 +1,14 @@
-#include <iostream>
-#include <vector>
-#include <stack>
+#include<iostream>
+#include<stack>
+#include<vector>
+
 using namespace std;
 
-void stack_concat(stack<int> &s1, stack<int> &s2) {
-  vector<int> v1;
-  vector<int> v2;
-  while(!s1.empty()){
-    v1.push_back(s1.top());
-    s1.pop();
-  }
-  while(!s2.empty()){
-    v2.push_back(s2.top());
-    s2.pop();
-  }
-  for(int i = v2.size()-1;i>=0;i--){
-    s1.push(v2[i]);
-  }
- for(int i = 0;i<v1.size();i++){
-    s1.push(v1[i]);
-  }
-  
-  
+int main(){
+vector<int> a = {1,2,3,4};
+a.insert(a.begin(),999)
+
+for (auto &x:a){
+    cout<<a<<" ";
 }
-int main() {
-  //read input
-  int n,m;
-  int c;
-  cin >> n >> m;
-  stack<int>  s1,s2;
-  for (int i = 0;i < n;i++) {
-cin >> c;
-    s1.push(c);
-  }
-  for (int i = 0;i < m;i++) {
-    cin >> c;
-    s2.push(c);
-  }
-  //call the function
-  stack_concat(s1,s2);
-  //display content of the stack
-  cout << "S1 has " << s1.size() << endl;
-  while (!s1.empty()) {
-    cout << s1.top() << " ";
-    s1.pop(); }
-  cout << endl;
-  //display content of the stack
-  cout << "S2 has " << s2.size() << endl;
-  while (!s2.empty()) {
-    cout << s2.top() << " ";
-s2.pop(); }
-  cout << endl;
 }

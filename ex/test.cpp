@@ -1,20 +1,14 @@
 #include<iostream>
 #include<stack>
+#include<vector>
 
 using namespace std;
 
 int main(){
-    stack<int> s;
-    int temp = 99;
-    while(temp!=0){
-        cin>>temp;
-        if(temp == 0){
-            break;
-        }
-        s.push(temp);
-    }
-    while(!s.empty()){
-        cout<<s.top()<<" ";
-        s.pop();
+    vector<int> a = {1,2,3,4};
+    auto it = a.insert(a.begin(),999);
+    cout<<" "<<*it;
+    for (auto &x:a){
+        cout<<x<<" ";
     }
 }

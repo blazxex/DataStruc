@@ -25,3 +25,5 @@ void CP::vector<T>::rotate(iterator first, iterator last, size_t k) {
 }
 
 #endif
+
+
