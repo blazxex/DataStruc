@@ -1,14 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <algorithm>
-#include <functional>
-#include <iostream>
-#include <string>
+#ifndef _CP_PRIORITY_QUEUE_INCLUDED_
+#define _CP_PRIORITY_QUEUE_INCLUDED_
+
 #include <stdexcept>
+#include <iostream>
+//#pragma once
 
 namespace CP {
 
 template <typename T,typename Comp = std::less<T> >
+
 class priority_queue
 {
   protected:
@@ -60,7 +60,7 @@ class priority_queue
     //-------------- constructor ----------
 
     // copy constructor
-    priority_queue(priority_queue<T,Comp>& a) :
+    priority_queue(const priority_queue<T,Comp>& a) :
       mData(new T[a.mCap]()), mCap(a.mCap), mSize(a.mSize), mLess(a.mLess)
     {
       for (size_t i = 0; i < a.mCap;i++) {
@@ -121,38 +121,12 @@ class priority_queue
       mSize--;
       fixDown(0);
     }
+
+
 };
 
 }
 
-//----------------------------- MAKE YOUR CHANGE BELOW THIS LINE ONLY --------------------
-class student {
-public:
-  std::string name;
-  int score;
+#endif
 
-  //constructor
-  student() : name(), score() { }
-  student(std::string aname,int ascore) : name(aname), score(ascore) { }
-  
 
-};
-CP::priority_queue<student> pq;
-
-//----------------------------- MAKE YOUR CHANGE BOVE THIS LINE ONLY --------------------
-int main(int argc, char *argv[]) {
-  int N,K;
-  std::cin >> N >> K;
-  while (N--) {
-    std::string a;
-    int b;
-    std::cin >> a >> b;
-    pq.push(student(a,b));
-  }
-
-  while (K--) {
-    student tmp = pq.top();
-    pq.pop();
-    std::cout << tmp.name << " " << tmp.score << std::endl;
-  }
-}
