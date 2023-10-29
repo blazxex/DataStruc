@@ -135,6 +135,12 @@ public:
   student() : name(), score() { }
   student(std::string aname,int ascore) : name(aname), score(ascore) { }
   
+  bool operator < (const student& s1 ) const{
+      if(score != s1.score){
+        return score <s1.score;
+      }
+      return name > s1.name;
+    }
 
 };
 CP::priority_queue<student> pq;

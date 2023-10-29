@@ -13,22 +13,23 @@ std::vector<T> CP::priority_queue<T,Comp>::at_level(size_t k) const {
   std::vector<T> r;
   size_t min_id = 0;
   size_t max_id = 0;
-  
-  for(int i = 1 ; i <= k-1 ; i++){
-    min_id+= pow(2,i);
+  size_t siz = 1;
+  for(int i = 0 ; i < k ; i++){
+    min_id = (min_id*2)+1;
+    siz*=2;
   }
+  if(min_id>mSize-1){
+    return r;
+  }
+  for(size_t j = 0 ; j< siz;j++ ){
+    if(min_id>mSize-1){
+      break;
+    }
+    r.push_back(mData[min_id]);
+    min_id++;
 
-  max_id = min_id+pow(2,k);
-  if(max_id>mSize-1){
-    max_id = mSize-1;
   }
-  r.resize(max_id-min_id);
-  size_t l = 0;
-  for(size_t j = min_id+1 ; j<=max_id ;j++ ){
-    r[l++] = mData[j];
-
-  }
-  std::sort(r.begin(),r.end(),std::greater<T>());
+ std::sort(r.rbegin(),r.rend(),mLess);
   return r;
 }
 

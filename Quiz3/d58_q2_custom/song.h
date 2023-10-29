@@ -49,8 +49,23 @@ class CMP1{
     }
 };
 
+class order2{
+    public:
+        bool operator()(const Song& s1, const Song& s2){
+            if(s1.count!=s2.count){
+                return s1.count<s2.count;
+            }
+            if(s1.artist!= s2.artist){
+                return s1.artist>s2.artist;
+            }
+            return s1.title > s2.title;
+        }
+};
+
+
+
 //  you *MIGHT* have to change the declaration of pq1 and pq2
 CP::priority_queue<Song,CMP1> pq1;
-CP::priority_queue<Song,greater<Song>> pq2;
+CP::priority_queue<Song,order2> pq2;
 
 #endif
