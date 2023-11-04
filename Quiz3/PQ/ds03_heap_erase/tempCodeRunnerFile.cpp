@@ -1,0 +1,2 @@
+  fixUp(idx);
+        fixDown(idx);
