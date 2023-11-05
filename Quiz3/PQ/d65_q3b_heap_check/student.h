@@ -7,13 +7,10 @@ template <typename T, typename Comp>
 bool CP::priority_queue<T, Comp>::check() {
   // Your code here
   // Return something
-  size_t idx = mSize-1;
-  while(idx>0){
-    size_t p = (idx-1)/2;
-    if(!mLess(mData[idx],mData[p])){
-      return false;
-    }
-    idx--;
+  for(int i = 1 ; i< mSize ; i ++){
+    int p = int((i-1)/2);
+    if(!mLess(mData[i],mData[p])) return false;
+
   }
   return true;
 }

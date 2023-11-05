@@ -7,25 +7,12 @@
 
 template <typename T,typename Comp >
 T CP::priority_queue<T,Comp>::get_kth(size_t k) const {
-  if (k == 1) 
-    return mData[0];
-  if (k == 2) {
-    if (mLess(mData[1],mData[2]))
-      return mData[2];
-    return mData[1];
+  std::vector<T> tmp;
+  for(int i = 0 ; i < 7 && i<mSize ; i++){ // height of 3 contain 7 members
+    tmp.push_back(mData[i]);
   }
-  if (k == 3) {
-    T tmp = mData[2];
-    if (mLess(mData[1],mData[2]))
-      tmp = mData[1];
-    for (int i = 0; i < 4; i++) {
-      if (3+i >= mSize) break;
-      if (mLess(tmp,mData[3+i]))
-        tmp = mData[3+i];
-    }
-    return tmp;
-  }
-  return mData[0];
+  sort(tmp.rbegin(),tmp.rend(),mLess);
+  return tmp[k-1];
 }
 
 #endif
