@@ -10,7 +10,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-template <typename T, typename C = std::less<T>>
+template <typename T, typename C = std::less<T> >
 void test_input() {
   int round,max_k;
   cin >> round >> max_k;
@@ -30,7 +30,7 @@ void test_input() {
   }
 }
 
-template <typename T, typename C = std::less<T>>
+template <typename T, typename C = std::less<T> >
 void test_random() {
   int n,repeat;
 
