@@ -4,9 +4,16 @@
 #include<map>
 
 using namespace std;
+void print_range2(int step, int goal){
+
+if (step < goal) {
+
+std::cout<<step<<" ";
+print_range2(step+1, goal);
+
+}
+}
 int main(){
-        int mData[6] = {10,20,30,40,50,60};
-        int x = -1%6;
-        cout<<mData[x];
+     print_range2(0,5);
 }
 
