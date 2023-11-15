@@ -9,6 +9,7 @@ class SparseGraph{
 public:
     SparseGraph() {
         // Your code here
+        
     }
 
     SparseGraph(int n_in) {

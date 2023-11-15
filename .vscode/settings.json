@@ -91,7 +91,8 @@
     "numeric": "cpp",
     "random": "cpp",
     "__memory": "cpp",
-    "iterator": "cpp"
+    "iterator": "cpp",
+    "charconv": "cpp"
   },
   "code-runner.executorMap": {
     "cpp": "cd $dir && g++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
