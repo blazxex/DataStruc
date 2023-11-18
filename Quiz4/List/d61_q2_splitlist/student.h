@@ -1,28 +1,37 @@
 void splitList(list<T>& list1, list<T>& list2) {
     // Add your code here
-    int num1 = (mSize + 1) / 2;
-    int num2 = mSize - num1;
-    if (num1 > 0) {
-        list1.mHeader->prev->next = mHeader->next;
-        mHeader->next->prev = list1.mHeader->prev;
-        node* tmp = mHeader->next;
-        for (int i = 0; i < num1; i++) {
-            tmp = tmp->next;
-        }
-        tmp->prev->next = list1.mHeader;
-        list1.mHeader->prev = tmp->prev;
 
-        if (num2 > 0) {
-            list2.mHeader->prev->next = tmp;
-            tmp->prev = list2.mHeader->prev;
-            mHeader->prev->next = list2.mHeader;
-            list2.mHeader->prev = mHeader->prev;
-        }
+    int secondSize = mSize / 2;
+    int firstSize = secondSize + (mSize % 2);
+
+    node *st = mHeader -> next;
+    node *stp = mHeader -> next;
+    node *scnd = mHeader->prev;
+    for(int i = 0 ; i < firstSize ; i ++){
+        stp = stp->next;   //got begin of second list;
     }
-    mHeader->prev = mHeader;
-    mHeader->next = mHeader;
+
+    st->prev = list1.mHeader->prev;
+    list1.mHeader->prev->next = st;
+    list1.mHeader->prev = stp->prev;
+    stp->prev->next = list1.mHeader;
+
+    list1.mSize += firstSize;
+
+    if(secondSize>0){
+        stp->prev = list2.mHeader -> prev;
+        list2.mHeader->prev->next = stp;
+        list2.mHeader->prev = scnd;
+        scnd->next= list2.mHeader;
+
+        list2.mSize += secondSize;
+        
+    }
     mSize = 0;
-    list1.mSize += num1;
-    list2.mSize += num2;
+    mHeader->next = mHeader;
+    mHeader->prev = mHeader;
+
+
+
 }
 

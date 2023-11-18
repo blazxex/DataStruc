@@ -6,6 +6,11 @@ template <typename KeyT,
           typename CompareT >
 CP::map_bst<KeyT,MappedT,CompareT> CP::map_bst<KeyT,MappedT,CompareT>::split(KeyT val) {
   //your code here
+  auto it = begin();
+  if(*it>=val){
+    if()
+  }
+  
   CP::map_bst<KeyT,MappedT,CompareT> result;
 
   return result;

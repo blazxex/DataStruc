@@ -4,19 +4,18 @@
 
 template <typename T>
 void CP::list<T>::merge(CP::list<CP::list<T>> &ls) {
-  //write your code here
-  for(auto &l : ls){
-    mHeader->prev->next = l.mHeader->next;
-    l.mHeader->next->prev = mHeader->prev;
-    l.mHeader->prev->next = mHeader;
-    mHeader->prev = l.mHeader -> prev;
-    mSize += l.size();
+for(auto &n : ls){
+  n.mHeader->next->prev = mHeader->prev;
+  n.mHeader->prev->next = mHeader;
+  mHeader->prev->next = n.mHeader->next;
+  mHeader->prev = n.mHeader->prev;
+  mSize+= n.mSize;
+  n.mHeader->next = n.mHeader;
+  n.mHeader->prev = n.mHeader;
 
-    l.mHeader->next = l.mHeader;
-    l.mHeader->prev = l.mHeader;
-    l.mSize = 0;
-  }
+  n.mSize = 0;
 
+}
 }
 
 #endif

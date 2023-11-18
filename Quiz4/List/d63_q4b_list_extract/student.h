@@ -4,34 +4,30 @@
 #include <algorithm>
 
 template <typename T>
-void CP::list<T>::extract(const T& value,iterator a, iterator b,CP::list<T>& output) {
-  //write your code here
+void CP::list<T>::extract(const T& value, iterator a, iterator b, CP::list<T>& output) {
+    while(a!=b){
+      if(*a == value){
+        node *currentNode = a.ptr;
+        node * nextNode = a.ptr -> next;
 
-  auto it = a;
-  while(it!=b){
-    if(*it == value){
-      auto it1(it.ptr->next);
-      node *n = new node(value,output.mHeader,output.mHeader->next);
-      output.mHeader->next->prev = n;
-      output.mHeader->next = n;
-      output.mSize++ ;
-      
-      
+        currentNode->prev->next = nextNode;
+        nextNode -> prev = currentNode->prev;
 
-      it.ptr->prev->next = it.ptr->next;
-      it.ptr->next->prev = it.ptr->prev;
-      delete it.ptr;
-      mSize--;
-      it = it1;
+        currentNode->next = output.mHeader->next;
+        output.mHeader->next->prev = currentNode;
+        currentNode -> prev = output.mHeader;
+        output.mHeader -> next = currentNode;
+
+        mSize -- ;
+        output.mSize++;
+
+        a.ptr = nextNode;
+      }
+      else{
+        a++;
+      }
     }
-    else{
-     it++;
-    }
-
-    
-    
-  }
-
 }
+
 
 #endif
