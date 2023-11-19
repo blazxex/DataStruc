@@ -2,34 +2,33 @@ void shift(int k) {
 	// TODO: Add your code here
 	auto it = begin();
 	if(k>0){
+	k = k % mSize;
 		while(k--){
-			if(it.ptr == mHeader){
-				it++;
-			}
-		it++;
+			it++;
 		}
-
 	}
 	else{
-		k = k*-1;
-		while(k--){
-			if(it.ptr == mHeader){
-				it--;
-			}
+	k = k*-1;
+	k = k % mSize;
+	while(k--){
 		it--;
-		}
 	}
-	node* newHeader = new node();
-	newHeader->next = it.ptr;
-	newHeader->prev = it.ptr->prev;
-	it.ptr->prev->next = newHeader;
-	it.ptr->prev = newHeader;
+	}
 	
-	mHeader->prev->next = mHeader->next;
-	mHeader->next->prev = mHeader->prev;
-	mHeader = newHeader;
+	node *afTer = it.ptr;
+	node *beFore = it.ptr->prev;
+	node * endList = mHeader->prev;
+	node *beGin = mHeader -> next;
 
+	beGin ->prev = endList;
+	endList->next  = beGin;
+	
+	afTer->prev = mHeader;
+	beFore -> next = mHeader;
+	mHeader -> next = afTer;
+	mHeader -> prev =beFore;
 
+	
 	
 
 }
