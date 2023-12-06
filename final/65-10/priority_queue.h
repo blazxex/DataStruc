@@ -16,6 +16,14 @@ class priority_queue
     size_t mCap;
     size_t mSize;
     Comp mLess;
+    std::unordered_map<T, size_t> mIndexMap;
+
+     void updateIndexMap() {
+        mIndexMap.clear();
+        for (size_t i = 0; i < mSize; ++i) {
+            mIndexMap[mData[i]] = i;
+        }
+    }
 
     void expand(size_t capacity) {
       T *arr = new T[capacity]();
@@ -27,44 +35,16 @@ class priority_queue
       mCap = capacity;
     }
 
-    void fixUp(size_t idx) {
-      T tmp = mData[idx];
-      while (idx > 0) {
-        size_t p = (idx - 1) / 2;
-        if ( mLess(tmp,mData[p]) ) break;
-        mData[idx] = mData[p];
-        idx = p;
-      }
-      mData[idx] = tmp;
-    }
+    void fixUp(size_t idx);
 
-    void fixDown(size_t idx) {
-      T tmp = mData[idx];
-      size_t c;
-      while ((c = 2 * idx + 1) < mSize) {
-        if (c + 1 < mSize && mLess(mData[c],mData[c + 1]) ) c++;
-        if ( mLess(mData[c],tmp) ) break;
-        mData[idx] = mData[c];
-        idx = c;
-      }
-      mData[idx] = tmp;
-    }
+    void fixDown(size_t idx);
 
-    void print() {
-      for (size_t i = 0;i < mSize;i++)
-        std::cout << mData[i] << " ";
-      std::cout << std::endl;
-    }
-
-      bool contain(const T &value){
-        return mData.find(value);
-    }
 
   public:
     //-------------- constructor ----------
 
     // copy constructor
-    priority_queue(const priority_queue<T,Comp>& a) :
+    priority_queue(priority_queue<T,Comp>& a) :
       mData(new T[a.mCap]()), mCap(a.mCap), mSize(a.mSize), mLess(a.mLess)
     {
       for (size_t i = 0; i < a.mCap;i++) {
@@ -126,9 +106,32 @@ class priority_queue
       fixDown(0);
     }
 
-    //for quiz
-    bool operator==(const priority_queue<T,Comp> &other) const;
+    void print_and_check() {
+      for (size_t i = 0;i < mSize;i++)
+        std::cout << mData[i] << " ";
+      std::cout << std::endl;
+      //this function will be different on grader
+    }
 
+    bool contain(const T &value) {
+        return mIndexMap.find(value) != mIndexMap.end();
+    }
+
+    // New method to change the value of an element
+    void change(const T& old_value, const T& new_value) {
+        auto it = mIndexMap.find(old_value);
+        if (it != mIndexMap.end()) {
+            size_t idx = it->second;
+            mData[idx] = new_value;
+
+            // Fix the heap property if necessary
+            fixUp(idx);
+            fixDown(idx);
+
+            // Update the index map
+            updateIndexMap();
+        }
+    }
 };
 
 }
@@ -136,3 +139,13 @@ class priority_queue
 #endif
 
 
+เติม code ตรงนี้ ถ้าที่ไม่พอให้เขียนไว้ด้านหลังของหน้า 9 เท่านั้น
+bool contain(const T& value) {
+return pos.find(value);
+}
+void change(const T& old_value, const T& new_value) {
+if (contain(old_value)) {
+size_t tmp = pos[old_value];
+mData[tmp] = new_value;
+pos.erase(old_value);
+pos[new_value] = tmp;

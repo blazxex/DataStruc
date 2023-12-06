@@ -26,3 +26,21 @@ void CP::list<T>::remove_all(const T& value) {
 }
 
 #endif
+
+
+
+iterator upper_bound(const  KeyT &k){
+  node *crr = mRoot;
+  node *ans = nullptr;
+  while(crr!= nullptr){
+    if(mLess(crr->data.first,k)){
+      crr = crr->right
+    }
+    else{
+      ans = crr;
+      crr = crr->left
+    }
+  }
+    return ptr(ans);
+
+}

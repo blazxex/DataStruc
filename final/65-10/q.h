@@ -56,10 +56,6 @@ class priority_queue
       std::cout << std::endl;
     }
 
-      bool contain(const T &value){
-        return mData.find(value);
-    }
-
   public:
     //-------------- constructor ----------
 
@@ -126,13 +122,13 @@ class priority_queue
       fixDown(0);
     }
 
-    //for quiz
-    bool operator==(const priority_queue<T,Comp> &other) const;
+    void contain(const T &value){
+        return mData.find(value);
+    }
+
 
 };
 
 }
 
 #endif
-
-
